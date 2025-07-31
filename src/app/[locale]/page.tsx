@@ -1,8 +1,10 @@
+import { useTranslations } from "next-intl";
 
 export default function Home() {
+  const t = useTranslations()
   return (
     <div>
-      Hello Word
+      {t('Example.item_example')}
     </div>
   );
 }
