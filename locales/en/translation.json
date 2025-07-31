@@ -1,0 +1,34 @@
+{
+  "Example": {
+    "item_example": "Hello world"
+  },
+  "Header": {
+    "Search": "Search...",
+    "Translate": {
+      "Vietnamese": "Vietnamese",
+      "English": "English"
+    },
+    "Notification": {
+      "Notification": "Notifications",
+      "See_all": "See all"
+    },
+    "Message": {
+      "Message": "Messages",
+      "See_all": "See all"
+    },
+    "Mode": {
+      "Dark_Mode": "Dark mode",
+      "Light_Mode": "Light mode"
+    },
+    "Profile": {
+      "Account": "My account",
+      "Profile_Page": "Profile page",
+      "Logout": "Log out"
+    },
+    "Languages": {
+      "Languages": "Change language",
+      "Vietnamese": "Vietnamese",
+      "English": "English"
+    }
+  }
+}

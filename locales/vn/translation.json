@@ -1,0 +1,34 @@
+{
+  "Example": {
+    "item_example": "Xin chào thế giới"
+  },
+  "Header": {
+    "Search": "Tìm kiếm...",
+    "Translate": {
+      "Vietnamese": "Tiếng Việt",
+      "English": "Tiếng Anh"
+    },
+    "Notification": {
+      "Notification": "Thông báo",
+      "See_all": "Xem tất cả"
+    },
+    "Message": {
+      "Message": "Tin nhắn",
+      "See_all": "Xem tất cả"
+    },
+    "Mode": {
+      "Dark_Mode": "Chế độ tối",
+      "Light_Mode": "Chế độ sáng"
+    },
+    "Profile": {
+      "Account": "Tài khoản của tôi",
+      "Profile_Page": "Trang cá nhân",
+      "Logout": "Đăng xuất"
+    },
+    "Languages": {
+      "Languages": "Thay đổi ngôn ngữ",
+      "VietNam": "Tiếng Việt",
+      "English": "Tiếng Anh"
+    }
+  }
+}
