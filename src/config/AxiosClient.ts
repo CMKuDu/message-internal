@@ -7,42 +7,47 @@ const request = axios.create({
   withCredentials: true,
 });
 export const axiosClient = {
-  async get<T = any>(path: string, options?: AxiosRequestConfig): Promise<T> {
+  async get<T>(path: string, options?: AxiosRequestConfig): Promise<T> {
     const response: AxiosResponse<T> = await request.get(path, options);
     return response.data;
   },
-  async post<T = any>(
+
+  async post<T, D = unknown>(
     path: string,
-    data?: any,
+    data: D,
     options?: AxiosRequestConfig
   ): Promise<T> {
     const response: AxiosResponse<T> = await request.post(path, data, options);
     return response.data;
   },
-  async put<T = any>(
+
+  async put<T, D = unknown>(
     path: string,
-    data?: any,
+    data?: D,
     options?: AxiosRequestConfig
   ): Promise<T> {
     const response: AxiosResponse<T> = await request.put(path, data, options);
     return response.data;
   },
-  async delete<T = any>(
+
+  async delete<T>(
     path: string,
     options?: AxiosRequestConfig
   ): Promise<T> {
     const response: AxiosResponse<T> = await request.delete(path, options);
     return response.data;
   },
-  async patch<T = any>(
+
+  async patch<T, D = unknown>(
     path: string,
-    data?: any,
+    data?: D,
     options?: AxiosRequestConfig
   ): Promise<T> {
     const response: AxiosResponse<T> = await request.patch(path, data, options);
     return response.data;
   },
-  async upload<T = any>(
+
+  async upload<T>(
     path: string,
     data: FormData,
     options?: AxiosRequestConfig
@@ -57,6 +62,7 @@ export const axiosClient = {
     return response.data;
   },
 };
+
 request.interceptors.request.use(
   async (config) => {
     try {

@@ -2,7 +2,6 @@
 import {
   Bell,
   MessageSquare,
-  Languages,
   Search,
   User,
   LogOut,
