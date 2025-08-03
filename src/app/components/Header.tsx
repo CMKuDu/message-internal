@@ -14,6 +14,9 @@ import { useState, useRef, useEffect } from "react"
 import { useTheme } from "next-themes"
 import { useTranslations } from "next-intl"
 import { LanguageSwitcher } from "./Languages"
+import { useDispatch, useSelector } from "react-redux"
+import { RootState } from "@/store"
+import { Button } from "@/components/ui/button"
 
 export default function Header() {
   const t = useTranslations();
@@ -27,6 +30,9 @@ export default function Header() {
 
   const { theme, setTheme, systemTheme } = useTheme()
   const [mounted, setMounted] = useState(false)
+
+  const dispatch = useDispatch();
+  const accessToken = useSelector((state: RootState) => state.auth.accessToken)
   useEffect(() => {
     setMounted(true)
 
@@ -175,19 +181,19 @@ export default function Header() {
 
         {/* Profile */}
         <div className="relative" ref={profileRef}>
-          <button
-            onClick={() => setShowProfile(!showProfile)}
-            className="p-1 hover:ring-2 hover:ring-blue-500 hover:ring-offset-2 hover:ring-offset-white dark:hover:ring-offset-black rounded-full transition-all duration-200"
-            title={t('Header.Profile.Account')}
-          >
-            <Image
-              src="/assets/images/logo/LogoTron.png"
-              alt="Avatar"
-              width={32}
-              height={32}
-              className="rounded-full object-cover"
-            />
-          </button>
+          {accessToken ? (
+            <p className="text-red-500 text-sm">Đã đăng nhập</p>
+          ) : (
+            <div className="flex gap-1">
+              <Button className="hover:bg-black">Đăng nhập</Button>
+              <Button className="bg-gray-800 hover:bg-gray-700 text-white">
+                Đăng ký
+              </Button>
+            </div>
+
+
+          )}
+
           {showProfile && (
             <div className={`absolute right-0 mt-2 w-52 ${currentTheme === 'dark'
               ? 'bg-gray-900 border-gray-700 text-white'

@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "./components/Header";
 import { ThemeProvider } from "next-themes";
 import { NextIntlClientProvider } from "next-intl";
+import ReduxProvider from "@/lib/provider/ReduxProvider";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -35,12 +36,15 @@ export default async function RootLayout({
             enableSystem
             defaultTheme="dark"
           >
-            <Header />
-            <main className="min-h-screen bg-white dark:bg-zinc-900 text-black dark:text-white transition-colors duration-200">
+            <ReduxProvider>
+              <Header />
+              <main className="min-h-screen bg-white dark:bg-zinc-900 text-black dark:text-white transition-colors duration-200">
 
-              {children}
+                {children}
 
-            </main>
+              </main>
+            </ReduxProvider>
+
 
 
           </ThemeProvider>
