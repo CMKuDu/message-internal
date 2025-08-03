@@ -8,7 +8,7 @@ const initialState: AuthSate = {
     accessToken: null,
 }
 
-const authSlice = createSlice({
+const authModalSlice = createSlice({
     name: 'auth',
     initialState,
     reducers: {
@@ -21,5 +21,5 @@ const authSlice = createSlice({
     }
 });
 
-export const { setAccessToken, clearAccessToken } = authSlice.actions;
-export default authSlice.reducer
+export const { setAccessToken, clearAccessToken } = authModalSlice.actions;
+export default authModalSlice.reducer

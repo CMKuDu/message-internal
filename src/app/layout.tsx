@@ -5,11 +5,13 @@ import Header from "./components/Header";
 import { ThemeProvider } from "next-themes";
 import { NextIntlClientProvider } from "next-intl";
 import ReduxProvider from "@/lib/provider/ReduxProvider";
+import { Button } from "@/components/ui/button";
+import { openModal } from "@/store/feature/authModalSlice";
+import AuthModal from "./components/AuthModal";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
 });
-
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
@@ -41,7 +43,7 @@ export default async function RootLayout({
               <main className="min-h-screen bg-white dark:bg-zinc-900 text-black dark:text-white transition-colors duration-200">
 
                 {children}
-
+                <AuthModal></AuthModal>
               </main>
             </ReduxProvider>
 

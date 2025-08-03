@@ -17,6 +17,7 @@ import { LanguageSwitcher } from "./Languages"
 import { useDispatch, useSelector } from "react-redux"
 import { RootState } from "@/store"
 import { Button } from "@/components/ui/button"
+import { openModal } from "@/store/feature/authModalSlice"
 
 export default function Header() {
   const t = useTranslations();
@@ -182,55 +183,66 @@ export default function Header() {
         {/* Profile */}
         <div className="relative" ref={profileRef}>
           {accessToken ? (
-            <p className="text-red-500 text-sm">Đã đăng nhập</p>
+            <div>
+              {showProfile && (
+                <div className={`absolute right-0 mt-2 w-52 ${currentTheme === 'dark'
+                  ? 'bg-gray-900 border-gray-700 text-white'
+                  : 'bg-white border-gray-200 text-black'
+                  } border shadow-xl rounded-lg p-2 z-50 animate-in slide-in-from-top-2 duration-200`}>
+                  <div className={`px-3 py-2 border-b ${currentTheme === 'dark' ? 'border-gray-700' : 'border-gray-100'
+                    } mb-1`}>
+                    <p className="font-medium text-sm">{t('Header.Profile.Account')}</p>
+                    <p className={`text-xs ${currentTheme === 'dark' ? 'text-gray-400' : 'text-gray-500'
+                      }`}>user@example.com</p>
+                  </div>
+
+                  <Link
+                    href="/profile"
+                    className={`flex items-center gap-3 px-3 py-2 rounded-md transition-colors duration-200 text-sm ${currentTheme === 'dark'
+                      ? 'hover:bg-gray-800'
+                      : 'hover:bg-gray-100'
+                      }`}
+                    onClick={() => setShowProfile(false)}
+                  >
+                    <User size={16} /> {t('Header.Profile.Profile_Page')}
+                  </Link>
+
+                  <button
+                    className={`flex items-center gap-3 px-3 py-2 w-full text-left rounded-md transition-colors duration-200 text-sm ${currentTheme === 'dark'
+                      ? 'hover:bg-gray-800 text-red-400'
+                      : 'hover:bg-gray-100 text-red-600'
+                      }`}
+                    onClick={() => {
+                      setShowProfile(false)
+                      // Handle logout logic here
+                    }}
+                  >
+                    <LogOut size={16} /> {t('Header.Profile.Logout')}
+                  </button>
+                </div>
+              )}
+            </div>
           ) : (
             <div className="flex gap-1">
-              <Button className="hover:bg-black">Đăng nhập</Button>
-              <Button className="bg-gray-800 hover:bg-gray-700 text-white">
+              <Button
+                variant="default"
+                onClick={() => dispatch(openModal('login'))}
+              >
+                Đăng nhập
+              </Button>
+              <Button
+                variant="ghost"
+                onClick={() => dispatch(openModal('register'))}
+                className="bg-white text-black border border-gray-300 hover:bg-gray-100 dark:bg-black dark:text-white dark:border-gray-700 dark:hover:bg-gray-800">
                 Đăng ký
               </Button>
+
             </div>
 
 
           )}
 
-          {showProfile && (
-            <div className={`absolute right-0 mt-2 w-52 ${currentTheme === 'dark'
-              ? 'bg-gray-900 border-gray-700 text-white'
-              : 'bg-white border-gray-200 text-black'
-              } border shadow-xl rounded-lg p-2 z-50 animate-in slide-in-from-top-2 duration-200`}>
-              <div className={`px-3 py-2 border-b ${currentTheme === 'dark' ? 'border-gray-700' : 'border-gray-100'
-                } mb-1`}>
-                <p className="font-medium text-sm">{t('Header.Profile.Account')}</p>
-                <p className={`text-xs ${currentTheme === 'dark' ? 'text-gray-400' : 'text-gray-500'
-                  }`}>user@example.com</p>
-              </div>
 
-              <Link
-                href="/profile"
-                className={`flex items-center gap-3 px-3 py-2 rounded-md transition-colors duration-200 text-sm ${currentTheme === 'dark'
-                  ? 'hover:bg-gray-800'
-                  : 'hover:bg-gray-100'
-                  }`}
-                onClick={() => setShowProfile(false)}
-              >
-                <User size={16} /> {t('Header.Profile.Profile_Page')}
-              </Link>
-
-              <button
-                className={`flex items-center gap-3 px-3 py-2 w-full text-left rounded-md transition-colors duration-200 text-sm ${currentTheme === 'dark'
-                  ? 'hover:bg-gray-800 text-red-400'
-                  : 'hover:bg-gray-100 text-red-600'
-                  }`}
-                onClick={() => {
-                  setShowProfile(false)
-                  // Handle logout logic here
-                }}
-              >
-                <LogOut size={16} /> {t('Header.Profile.Logout')}
-              </button>
-            </div>
-          )}
         </div>
       </div>
     </header>
