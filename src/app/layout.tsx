@@ -5,8 +5,6 @@ import Header from "./components/Header";
 import { ThemeProvider } from "next-themes";
 import { NextIntlClientProvider } from "next-intl";
 import ReduxProvider from "@/lib/provider/ReduxProvider";
-import { Button } from "@/components/ui/button";
-import { openModal } from "@/store/feature/authModalSlice";
 import AuthModal from "./components/AuthModal";
 const geistSans = Geist({
   variable: "--font-geist-sans",

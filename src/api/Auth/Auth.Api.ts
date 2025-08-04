@@ -4,7 +4,7 @@ import { RequestRegisterDTO } from "./dto/req/ResquestRegister.dto";
 import { ResponseRegisterDTO } from "./dto/res/ResponseRegister.dto";
 import { RequestLoginDTO } from "./dto/req/ResquestLogin.dto";
 import { ResponseLoginDTO } from "./dto/res/ResponseLogin.dto";
-const END_POINT = "/auth/api/v2";
+const END_POINT = "/api/v2/auth";
 export const AuthAPI = {
   async Register(reqBody: RequestRegisterDTO): Promise<ResponseRegisterDTO> {
     const res = await axiosClient.post<ResponseApi<RequestRegisterDTO>>(

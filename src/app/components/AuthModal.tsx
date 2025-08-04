@@ -3,7 +3,6 @@
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter, DialogClose } from "@/components/ui/dialog";
 import { RootState } from "@/store";
 import { closeModal, openModal } from "@/store/feature/authModalSlice";
-import { useTranslations } from "next-intl";
 import { useDispatch, useSelector } from "react-redux";
 import LoginForm from "./LoginForm";
 import RegisterForm from "./RegisterForm";
@@ -14,7 +13,6 @@ import { ArrowLeft, UserPlus, LogIn } from "lucide-react";
 export default function AuthModal() {
     const dispatch = useDispatch();
     const { isTurnOn, mode } = useSelector((state: RootState) => state.authModal)
-    const t = useTranslations();
     const [isAnimating, setIsAnimating] = useState(false);
     const [currentMode, setCurrentMode] = useState(mode);
 
@@ -94,7 +92,6 @@ export default function AuthModal() {
                                 ? "Đăng nhập để tiếp tục hành trình của bạn"
                                 : "Bắt đầu hành trình mới cùng chúng tôi" 
                             }
-                            <p>Chưa call API đâu đừng dọc</p>
                         </DialogDescription>
                     </DialogHeader>
 

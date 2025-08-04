@@ -12,11 +12,10 @@ import {
 import { Button } from "@/components/ui/button"
 import { Languages } from "lucide-react"
 import { useTranslations } from "next-intl"
-import { usePathname, useRouter } from "@/i18n/navigation"
+import { usePathname } from "@/i18n/navigation"
 
 export function LanguageSwitcher() {
   const t = useTranslations();
-  const router = useRouter();
   const pathname = usePathname();
 
   const locales = [
