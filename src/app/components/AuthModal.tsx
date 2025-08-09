@@ -42,7 +42,7 @@ export default function AuthModal() {
                 {/* Header with animated tabs */}
                 <div className="relative">
                     <div className="flex border-b border-gray-200 dark:border-gray-700 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm">
-                        <button
+                        <Button
                             onClick={() => switchMode('login')}
                             className={`flex-1 px-6 py-4 text-sm font-medium transition-all duration-300 relative ${
                                 mode === 'login'
@@ -57,7 +57,7 @@ export default function AuthModal() {
                             {mode === 'login' && (
                                 <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full transform origin-center animate-in slide-in-from-left duration-300" />
                             )}
-                        </button>
+                        </Button>
                         <button
                             onClick={() => switchMode('register')}
                             className={`flex-1 px-6 py-4 text-sm font-medium transition-all duration-300 relative ${
