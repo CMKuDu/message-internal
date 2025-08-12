@@ -1,3 +1,4 @@
+import CookieTokenService from '@/utils/CookieTokenService';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 interface AuthSate {
@@ -5,7 +6,7 @@ interface AuthSate {
 }
 
 const initialState: AuthSate = {
-    accessToken: null,
+    accessToken: CookieTokenService.getAccessToken() || null,
 }
 
 const authModalSlice = createSlice({
@@ -14,9 +15,11 @@ const authModalSlice = createSlice({
     reducers: {
         setAccessToken: (state, action: PayloadAction<string>) => {
             state.accessToken = action.payload;
+            CookieTokenService.setAccessToken(action.payload);
         },
         clearAccessToken: (state) => {
             state.accessToken = null;
+            CookieTokenService.clearAll();
         }
     }
 });
